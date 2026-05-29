@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>致最特别的你</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 顶部磨砂导航 -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero"><span class="apple-mark"></span> 致你</a>
+      <div class="nav-right">
+        <a href="#pair" class="nav-link">配对</a>
+        <a href="#reasons" class="nav-link">理由</a>
+        <a href="#confess" class="nav-cta">在一起</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-content reveal">
+        <p class="eyebrow">致最特别的你</p>
+        <h1 class="hero-title">你，<br/>是我见过<br/><span class="shimmer">最亮的光。</span></h1>
+        <p class="hero-sub">一个天秤男孩，想认真说给双子女孩听的话。</p>
+        <div class="hero-actions">
+          <a href="#story" class="btn-primary">开始 ›</a>
+          <a href="#confess" class="btn-link">直接看结局 ›</a>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- 大字陈述（黑底沉浸） -->
+    <section class="statement dark" id="story">
+      <h2 class="statement-text reveal">
+        有些话，<br/>我攒了好久的勇气，<br/><span class="muted">想认真，说给你听。</span>
+      </h2>
+    </section>
+
+    <!-- 配对：参数规格风 -->
+    <section class="pair" id="pair">
+      <header class="sec-head reveal">
+        <h2 class="sec-title">灵魂配对。<br/>像是天生一对。</h2>
+        <p class="sec-sub">INFP 的理想主义，遇上 ENFP 的逐光而行。</p>
+      </header>
+
+      <div class="spec-grid">
+        <article class="spec-card reveal">
+          <div class="glyph libra">♎</div>
+          <h3>他 · 天秤座</h3>
+          <p class="mbti">INFP · 调停者</p>
+          <ul>
+            <li>温柔、理想主义</li>
+            <li>嘴笨，但心里全是你</li>
+            <li>把浪漫藏在细节里</li>
+          </ul>
+        </article>
+        <article class="spec-card reveal">
+          <div class="glyph gemini">♊</div>
+          <h3>她 · 双子座</h3>
+          <p class="mbti">ENFP · 竞选者</p>
+          <ul>
+            <li>古灵精怪、闪闪发光</li>
+            <li>好奇心爆棚的小太阳</li>
+            <li>走到哪，亮到哪</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="bignum reveal">
+        <div class="bignum-value"><span id="match-num">0</span><span class="pct">%</span></div>
+        <p class="bignum-label">契合度。<span class="muted">理想主义者与逐光的人，刚刚好。</span></p>
+      </div>
+    </section>
+
+    <!-- 喜欢你的理由：bento 网格 -->
+    <section class="reasons" id="reasons">
+      <header class="sec-head reveal">
+        <h2 class="sec-title">喜欢你的，<br/>远不止一点。</h2>
+        <p class="sec-sub">偷偷记下的 100 个里，先说这几个。</p>
+      </header>
+
+      <div class="bento">
+        <article class="bento-card big reveal">
+          <span class="bento-no">01</span>
+          <p>喜欢你笑起来的样子，<br/>像把整个夏天都点亮了。</p>
+        </article>
+        <article class="bento-card reveal">
+          <span class="bento-no">02</span>
+          <p>喜欢你天马行空的脑洞，<br/>每天都有新惊喜。</p>
+        </article>
+        <article class="bento-card reveal">
+          <span class="bento-no">03</span>
+          <p>喜欢你认真说梦想时，<br/>眼睛里有星星。</p>
+        </article>
+        <article class="bento-card wide dark reveal">
+          <span class="bento-no light">04</span>
+          <p>喜欢你，是不需要理由的——<br/>但我还是想，列上一百个。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 表白：黑底高潮 -->
+    <section class="confess dark" id="confess">
+      <div class="confess-inner reveal">
+        <p class="eyebrow light">所以</p>
+        <h2 class="confess-title">从今往后的每个夜晚，<br/>你愿意做我<br/><span class="shimmer">一个人的小太阳吗？</span></h2>
+        <div class="choice-zone" id="choice-zone">
+          <button class="btn-primary big" id="yes-btn">我愿意</button>
+          <button class="btn-ghost" id="no-btn">让我再想想…</button>
+        </div>
+        <p class="teaser" id="teaser"></p>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <p>为你而做 · 仅此一份</p>
+    </footer>
+
+  </main>
+
+  <!-- 庆祝 overlay -->
+  <div class="final-overlay" id="final-overlay" aria-hidden="true">
+    <canvas id="confetti"></canvas>
+    <div class="final-card">
+      <div class="final-heart">♥</div>
+      <h2 class="final-title">太好啦。</h2>
+      <p class="final-text">谢谢你愿意牵起我的手。<br/>往后的每一天，我都想和你一起，<br/>把平凡的日子，过成闪闪发亮的星河。</p>
+      <p class="signature">—— 永远爱你的天秤男孩</p>
+      <button class="btn-primary" id="replay-btn">再看一遍</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
