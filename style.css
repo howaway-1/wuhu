@@ -7,8 +7,10 @@
   --blue: #0071e3;
   --blue-hover: #0077ed;
   --nav-h: 48px;
-  --font: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+  --font: "Inter", system-ui, "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
           "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  /* 深炭灰渐变替代纯黑，避免刺眼、增加层次 */
+  --dark-bg: radial-gradient(120% 90% at 50% 0%, #15151c 0%, #0d0d12 55%, #0a0a0f 100%);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -17,9 +19,13 @@ body {
   font-family: var(--font);
   color: var(--ink);
   background: var(--bg);
-  line-height: 1.4;
+  line-height: 1.5;
   letter-spacing: -0.01em;
 }
+
+/* 无障碍：键盘焦点可见 */
+:focus-visible { outline: 3px solid rgba(0,113,227,0.6); outline-offset: 3px; border-radius: 6px; }
+.dark :focus-visible { outline-color: rgba(94,176,255,0.85); }
 
 /* ===== 导航 ===== */
 .nav {
@@ -68,13 +74,15 @@ body {
 .nav-cta {
   font-size: 13px; color: #fff; text-decoration: none;
   background: var(--blue); padding: 6px 13px; border-radius: 980px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
-.nav-cta:hover { background: var(--blue-hover); }
+/* 优化：链接/胶囊 hover 微动效 200ms */
+.nav-cta:hover { background: var(--blue-hover); transform: translateY(-1px); }
 
 /* ===== 通用 ===== */
 section { padding: 120px 22px; }
-.dark { background: #000; color: #f5f5f7; }
+/* 优化：纯黑改深炭灰微渐变 */
+.dark { background: var(--dark-bg); color: #f5f5f7; }
 .muted { color: var(--ink-soft); }
 .dark .muted { color: #86868b; }
 .shimmer {
@@ -131,12 +139,14 @@ section { padding: 120px 22px; }
 .btn-primary {
   display: inline-block;
   background: var(--blue); color: #fff; text-decoration: none;
-  font-size: 17px; font-weight: 400;
+  font-size: 17px; font-weight: 500;
   padding: 12px 24px; border: none; border-radius: 980px; cursor: pointer;
   font-family: var(--font);
-  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 6px 18px rgba(0,113,227,0.28);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-.btn-primary:hover { background: var(--blue-hover); }
+/* 优化：按钮 hover 柔和上浮 + 阴影加深 200ms */
+.btn-primary:hover { background: var(--blue-hover); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,113,227,0.38); }
 .btn-primary:active { transform: scale(0.97); }
 .btn-primary.big { font-size: 21px; padding: 16px 38px; }
 .btn-link {
@@ -174,10 +184,13 @@ section { padding: 120px 22px; }
   display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
 }
 .spec-card {
-  background: #fff; border-radius: 28px; padding: 44px 38px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  background: #fff; border-radius: 24px; padding: 44px 38px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+/* 优化：规格卡 hover 微上浮 */
+.spec-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.1); }
 .glyph {
   width: 92px; height: 92px; margin: 0 auto 22px; border-radius: 50%;
   display: grid; place-items: center; font-size: 46px; color: #fff;
@@ -187,7 +200,8 @@ section { padding: 120px 22px; }
 .spec-card h3 { font-size: 28px; font-weight: 700; }
 .spec-card .mbti { font-size: 17px; color: var(--blue); margin: 4px 0 18px; font-weight: 500; }
 .spec-card ul { list-style: none; }
-.spec-card li { font-size: 17px; color: var(--ink-soft); padding: 7px 0; border-top: 1px solid var(--line); }
+/* 优化：渐变细分割线，更精致 */
+.spec-card li { font-size: 17px; color: var(--ink-soft); padding: 9px 0; border-top: 1px solid; border-image: linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent) 1; }
 .spec-card li:first-child { border-top: none; }
 
 .bignum { text-align: center; margin-top: 84px; }
@@ -215,7 +229,7 @@ section { padding: 120px 22px; }
 .bento-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.1); }
 .bento-card.big { grid-row: span 2; justify-content: center; }
 .bento-card.wide { grid-column: 1 / -1; }
-.bento-card.dark { background: #000; color: #f5f5f7; }
+.bento-card.dark { background: var(--dark-bg); color: #f5f5f7; }
 .bento-no {
   font-size: 22px; font-weight: 800; color: var(--blue);
   position: absolute; top: 28px; left: 34px; letter-spacing: 0;
@@ -244,7 +258,7 @@ section { padding: 120px 22px; }
 /* ===== 庆祝 overlay ===== */
 .final-overlay {
   position: fixed; inset: 0; z-index: 200;
-  background: rgba(0, 0, 0, 0.92);
+  background: radial-gradient(120% 100% at 50% 0%, rgba(21,21,28,0.95), rgba(10,10,15,0.96));
   backdrop-filter: blur(8px);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: opacity 0.6s ease;
