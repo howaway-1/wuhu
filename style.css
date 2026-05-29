@@ -215,6 +215,7 @@ section { padding: 120px 22px; }
 .bento-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.1); }
 .bento-card.big { grid-row: span 2; justify-content: center; }
 .bento-card.wide { grid-column: 1 / -1; }
+.bento-card.dark { background: #000; color: #f5f5f7; }
 .bento-no {
   font-size: 22px; font-weight: 800; color: var(--blue);
   position: absolute; top: 28px; left: 34px; letter-spacing: 0;
