@@ -3,17 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>致最特别的你 · 一封会动的情书</title>
+  <title>致最特别的你 · 一封会发光的情书</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Long+Cang&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Long+Cang&family=Noto+Serif+SC:wght@400;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 动态粒子 / 爱心背景 -->
+  <!-- 极光 / 光晕背景层 -->
+  <div class="aurora">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <!-- 星空 / 粒子画布 -->
   <canvas id="bg-canvas"></canvas>
 
   <!-- 音乐开关 -->
-  <button id="music-toggle" class="music-toggle" title="背景音乐">
+  <button id="music-toggle" class="music-toggle" title="背景音乐" aria-label="背景音乐开关">
     <span class="note">♪</span>
   </button>
 
@@ -22,53 +30,60 @@
     <!-- 场景 0：信封 -->
     <section class="scene active" data-scene="0">
       <div class="envelope-wrap">
+        <p class="eyebrow">FOR YOU · 写给你的星空</p>
         <div class="envelope" id="envelope">
           <div class="flap"></div>
           <div class="pocket"></div>
-          <div class="letter-peek">
-            <span class="seal">❤</span>
-          </div>
+          <div class="letter-peek"><span class="seal">❤</span></div>
+          <div class="env-glow"></div>
         </div>
-        <h1 class="title-mini">有一封写给你的信</h1>
-        <button class="btn-glow" id="open-btn">轻轻打开它 ✶</button>
-        <p class="hint">建议打开声音，会更有感觉哦～ 🎧</p>
+        <h1 class="title-main">有一封<span class="grad">会发光的信</span><br/>想轻轻交给你</h1>
+        <button class="btn-glow" id="open-btn"><span>轻轻打开它</span> ✶</button>
+        <p class="hint">🎧 戴上耳机，会更有氛围哦</p>
       </div>
     </section>
 
     <!-- 场景 1：开场白 -->
     <section class="scene" data-scene="1">
       <div class="card">
-        <p class="typed" data-text="嘿，双子座的小太阳：" data-delay="200"></p>
-        <p class="typed" data-text="我是那个总在你身边、有点慢热的天秤男孩。" data-delay="1600"></p>
-        <p class="typed" data-text="今天，我攒了好久的勇气，想认真地和你说几句话。" data-delay="3600"></p>
-        <button class="btn-glow next-btn">我准备好啦 →</button>
+        <div class="card-deco">✦</div>
+        <p class="typed" data-text="嘿，我的双子座小太阳：" data-delay="200"></p>
+        <p class="typed" data-text="我是那个总在你身边、有点慢热的天秤男孩。" data-delay="1700"></p>
+        <p class="typed" data-text="今晚，我攒了好久的勇气，想认真和你说几句话。" data-delay="3900"></p>
+        <button class="btn-glow next-btn"><span>我准备好啦</span> →</button>
       </div>
     </section>
 
-    <!-- 场景 2：MBTI 配对分析 -->
+    <!-- 场景 2：星座配对 -->
     <section class="scene" data-scene="2">
       <div class="card wide">
-        <h2 class="scene-title">我们的「灵魂配对报告」</h2>
+        <h2 class="scene-title">我们的<span class="grad">星座配对报告</span></h2>
         <div class="match-row">
           <div class="person him reveal">
-            <div class="avatar">🧑‍🎨</div>
+            <div class="zodiac-ring">
+              <span class="glyph">♎</span>
+            </div>
             <div class="tag">他 · INFP · 天秤座</div>
             <ul>
               <li>温柔、理想主义</li>
-              <li>嘴笨但心里全是你</li>
-              <li>会把浪漫藏在细节里</li>
+              <li>嘴笨，但心里全是你</li>
+              <li>把浪漫藏在细节里</li>
             </ul>
           </div>
           <div class="heart-link reveal">
+            <div class="link-line"></div>
             <div class="big-heart">💞</div>
+            <div class="link-line"></div>
           </div>
           <div class="person her reveal">
-            <div class="avatar">👩‍🚀</div>
+            <div class="zodiac-ring alt">
+              <span class="glyph">♊</span>
+            </div>
             <div class="tag">她 · ENFP · 双子座</div>
             <ul>
               <li>古灵精怪、闪闪发光</li>
               <li>好奇心爆棚的小太阳</li>
-              <li>走到哪亮到哪</li>
+              <li>走到哪，亮到哪</li>
             </ul>
           </div>
         </div>
@@ -77,54 +92,55 @@
           <div class="meter-track"><div class="meter-fill" id="meter-fill"></div></div>
           <div class="meter-num" id="meter-num">0%</div>
         </div>
-        <p class="match-note">「理想主义者」遇上「逐光的人」——<br/>你负责发光发热，我负责把这份光好好珍藏。</p>
-        <button class="btn-glow next-btn">那……然后呢？ →</button>
+        <p class="match-note">「理想主义者」遇上「逐光的人」——<br/>你负责发光发热，我负责把这束光好好珍藏。</p>
+        <button class="btn-glow next-btn"><span>那……然后呢</span> →</button>
       </div>
     </section>
 
     <!-- 场景 3：喜欢你的理由 -->
     <section class="scene" data-scene="3">
       <div class="card wide">
-        <h2 class="scene-title">我偷偷记下的 100 个喜欢里，先说这 4 个</h2>
+        <h2 class="scene-title">偷偷记下的 100 个喜欢里，<br/>先翻开这 4 个</h2>
         <div class="reasons">
           <div class="reason-card" data-front="01" data-back="喜欢你笑起来的样子，像把整个夏天都点亮了。">
             <div class="reason-inner">
-              <div class="reason-face front">01</div>
+              <div class="reason-face front"><span class="num">01</span><span class="petal">✿</span></div>
               <div class="reason-face back">喜欢你笑起来的样子，像把整个夏天都点亮了。</div>
             </div>
           </div>
           <div class="reason-card" data-front="02" data-back="喜欢你天马行空的脑洞，每天都有新惊喜。">
             <div class="reason-inner">
-              <div class="reason-face front">02</div>
+              <div class="reason-face front"><span class="num">02</span><span class="petal">✿</span></div>
               <div class="reason-face back">喜欢你天马行空的脑洞，每天都有新惊喜。</div>
             </div>
           </div>
           <div class="reason-card" data-front="03" data-back="喜欢你认真说梦想时，眼睛里有星星。">
             <div class="reason-inner">
-              <div class="reason-face front">03</div>
+              <div class="reason-face front"><span class="num">03</span><span class="petal">✿</span></div>
               <div class="reason-face back">喜欢你认真说梦想时，眼睛里有星星。</div>
             </div>
           </div>
           <div class="reason-card" data-front="04" data-back="喜欢你，是不需要理由的——但我还是想列一百个。">
             <div class="reason-inner">
-              <div class="reason-face front">04</div>
+              <div class="reason-face front"><span class="num">04</span><span class="petal">✿</span></div>
               <div class="reason-face back">喜欢你，是不需要理由的——但我还是想列一百个。</div>
             </div>
           </div>
         </div>
         <p class="hint">👆 点开每一张卡片看看～</p>
-        <button class="btn-glow next-btn">我有话想问你 →</button>
+        <button class="btn-glow next-btn"><span>我有话想问你</span> →</button>
       </div>
     </section>
 
     <!-- 场景 4：表白 + 大问题 -->
     <section class="scene" data-scene="4">
       <div class="card confess">
+        <div class="card-deco">✦</div>
         <h2 class="confess-title">所以……</h2>
-        <p class="confess-line">从今往后，</p>
-        <p class="confess-line big">你愿意做我一个人的小太阳吗？☀️</p>
+        <p class="confess-line">从今往后的每一个夜晚，</p>
+        <p class="confess-line big">你愿意做我一个人的小太阳吗？</p>
         <div class="choice-zone">
-          <button class="btn-yes" id="yes-btn">愿意！❤️</button>
+          <button class="btn-yes" id="yes-btn">我愿意 ❤</button>
           <button class="btn-no" id="no-btn">让我再想想…</button>
         </div>
         <p class="teaser" id="teaser"></p>
@@ -136,18 +152,15 @@
       <div class="card final">
         <div class="final-heart">💖</div>
         <h2 class="final-title">太好啦！！！</h2>
-        <p class="final-text">谢谢你愿意牵起我的手。<br/>往后的每一天，我都想和你一起，<br/>把平凡的日子过成闪闪发亮的样子。</p>
-        <p class="signature">—— 永远爱你的天秤男孩 🤍</p>
-        <button class="btn-glow" id="replay-btn">再看一遍 ↺</button>
+        <p class="final-text">谢谢你愿意牵起我的手。<br/>往后的每一天，我都想和你一起，<br/>把平凡的日子，过成闪闪发亮的星河。</p>
+        <p class="signature">—— 永远爱你的天秤男孩</p>
+        <button class="btn-glow" id="replay-btn"><span>再看一遍</span> ↺</button>
       </div>
     </section>
 
   </main>
 
-  <audio id="bgm" loop preload="auto">
-    <!-- 轻柔的程序生成旋律由 script.js 通过 Web Audio 提供，无需外部音频文件 -->
-  </audio>
-
+  <audio id="bgm" loop preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
