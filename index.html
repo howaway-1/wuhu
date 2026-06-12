@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心动信笺 · 可编辑表白页</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="sunset" data-effect="hearts">
+
+  <!-- 背景特效层 -->
+  <canvas id="fx-canvas"></canvas>
+
+  <!-- 顶部工具栏 -->
+  <header id="toolbar">
+    <div class="toolbar-group">
+      <span class="logo">💌 心动信笺</span>
+    </div>
+    <div class="toolbar-group" id="edit-tools">
+      <label class="tool-label">主题
+        <select id="theme-select">
+          <option value="sunset">落日暖橙</option>
+          <option value="rose">玫瑰粉雾</option>
+          <option value="midnight">午夜星河</option>
+          <option value="mint">薄荷初夏</option>
+          <option value="lavender">薰衣草紫</option>
+        </select>
+      </label>
+      <label class="tool-label">特效
+        <select id="effect-select">
+          <option value="hearts">漂浮爱心</option>
+          <option value="petals">飘落花瓣</option>
+          <option value="stars">闪烁星光</option>
+          <option value="bubbles">梦幻泡泡</option>
+          <option value="none">无特效</option>
+        </select>
+      </label>
+      <button id="add-sticker-btn" class="tool-btn" title="添加贴纸">➕ 贴纸</button>
+      <button id="save-btn" class="tool-btn" title="保存到本地">💾 保存</button>
+      <button id="share-btn" class="tool-btn" title="生成分享链接">🔗 分享</button>
+      <button id="reset-btn" class="tool-btn danger" title="恢复默认">↺ 重置</button>
+    </div>
+    <div class="toolbar-group">
+      <button id="mode-toggle" class="tool-btn primary">👀 预览模式</button>
+    </div>
+  </header>
+
+  <!-- 贴纸选择面板 -->
+  <div id="sticker-panel" class="hidden">
+    <div class="sticker-panel-title">点一个贴纸放到页面上，拖动它到任意位置</div>
+    <div class="sticker-grid"></div>
+  </div>
+
+  <!-- 主内容 -->
+  <main id="stage">
+    <section class="card">
+      <p class="kicker" data-key="kicker" contenteditable="false">致 心里那个闪闪发光的人</p>
+      <h1 class="title" data-key="title" contenteditable="false">遇见你之后，<br>连风都变得温柔了</h1>
+      <p class="message" data-key="message" contenteditable="false">不知道从什么时候开始，我的世界悄悄多了一个频道——里面全是你。你笑的时候，我心里像有烟花在放；你不在的时候，连奶茶都没那么甜了。我想把每一个普通的日子，都过成和你有关的样子。</p>
+      <p class="question" data-key="question" contenteditable="false">所以……可以借你的余生，跟我的余生拼个桌吗？</p>
+
+      <div class="answer-zone">
+        <button id="yes-btn">愿意 💖</button>
+        <button id="no-btn">再想想</button>
+      </div>
+
+      <p class="signature" data-key="signature" contenteditable="false">—— 一个偷偷喜欢你很久的人</p>
+    </section>
+
+    <div id="sticker-layer"></div>
+  </main>
+
+  <!-- 答应后的彩蛋 -->
+  <div id="celebrate" class="hidden">
+    <div class="celebrate-card">
+      <div class="celebrate-emoji">🎉💖🎉</div>
+      <p class="celebrate-text" data-key="celebrate" contenteditable="false">耶！！从今天起，你的快乐由我承包啦！</p>
+      <button id="celebrate-close">回到信笺</button>
+    </div>
+  </div>
+
+  <div id="toast" class="hidden"></div>
+
+  <footer id="hint">编辑模式下：点击文字直接修改 · 添加贴纸后可拖动 / 双击删除 · 「分享」生成专属链接发给 TA</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
